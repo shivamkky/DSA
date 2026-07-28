@@ -3,22 +3,33 @@ class Solution {
         int a = Integer.MIN_VALUE;
         int b = Integer.MIN_VALUE;
         int c = Integer.MIN_VALUE;
-        
 
-        int x=Integer.MAX_VALUE;
-        int y=Integer.MAX_VALUE;
-        for(int num:nums){
-            int oa=a,
-                ob=b,
-                ox=x;
+        int x = Integer.MAX_VALUE;
+        int y = Integer.MAX_VALUE;
 
-                a=Math.max(a,num);
-                b=Math.max(b,Math.min(oa,num));
-                c=Math.max(c,Math.min(ob,num));
+        for (int num : nums) {
 
-                x=Math.min(x,num);
-                y=Math.min(y,Math.max(ox,num));
+            // Three largest
+            if (num >= a) {
+                c = b;
+                b = a;
+                a = num;
+            } else if (num >= b) {
+                c = b;
+                b = num;
+            } else if (num > c) {
+                c = num;
+            }
+
+            // Two smallest
+            if (num <= x) {
+                y = x;
+                x = num;
+            } else if (num < y) {
+                y = num;
+            }
         }
-        return Math.max(a*b*c,a*x*y);
+
+        return Math.max(a * b * c, a * x * y);
     }
 }

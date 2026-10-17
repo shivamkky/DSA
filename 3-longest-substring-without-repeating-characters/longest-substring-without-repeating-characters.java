@@ -1,6 +1,6 @@
 class Solution {
     public int lengthOfLongestSubstring(String s) {
-        int res=0;
+         int res=0;
         int left=0;
         int right=0;
         Map<Character,Integer>map=new HashMap();
